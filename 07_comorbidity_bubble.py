@@ -19,7 +19,7 @@ def get_num_proportion(data):
     return np.array(n), np.array(p)
 
 
-com = pd.read_csv('../sample/com_iv.csv')
+com = pd.read_csv('./sample/com_iv.csv')
 num, proportion = get_num_proportion(com.iloc[:, 1:])
 
 colors = ['#3951a2', "#5c90c2", "#92c5de", "#fdb96b", "#f67948", "#da382a", "#a80326"]
