@@ -1,9 +1,9 @@
 #!/bin/bash
-maxd=13
+max_dim=13
 i=0
 cuda=4
 
-for (( hidden_dims=3; hidden_dims< $maxd; hidden_dims+=$cuda))
+for (( hidden_dims=3; hidden_dims< max_dim; hidden_dims+=$cuda))
   do
     {
       for (( i=0; i< $cuda; i+=1))

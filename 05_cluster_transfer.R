@@ -1,8 +1,8 @@
 # install.packages("ggalluvial")
 library("ggalluvial")
 
-png('cluster_interpret_iv.png', res=300, width = 5000, height = 2400)
-data<-readr::read_csv(paste0("./sample/cluster_interpret.csv"))
+png('cluster_transfer.png', res=300, width = 5000, height = 2400)
+data<-readr::read_csv(paste0("./sample/cluster_transfer.csv"))
 levels(data$cluster) <- rev(levels(data$cluster))
 res <- ggplot(data,
 aes(x = c, stratum = cluster, alluvium = id,
