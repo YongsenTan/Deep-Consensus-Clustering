@@ -2,7 +2,7 @@
 
 ## Workflow
 
-![Graphic Abstract](.\img\Graphic Abstract.png)
+![Graphic Abstract](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Graphic%20Abstract.png)
 
 - **Study Design:** Individuals with AKI within 48-hour admission were included and temporal laboratory measurements were extracted from two public databases. 
 - **Representation Learning:** Laboratory data were split to derive multiple representations with supervised LSTM autoencoders. 
@@ -13,7 +13,7 @@
 
 ## Understanding deep consensus clustering
 
-![Model Overview](.\img\Model Overview.png)
+![Model Overview](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Model%20Overview.png)
 
 - **a.** Time series electronic health records (EHR) were utilized as input data for the Bi-LSTM encoder in our study. The Bi-LSTM encoder processed the EHR data, and the hidden state in the final time step was extracted as the representation. Subsequently, the Bi-LSTM decoder employed both the representation and the time-reversed input data to reconstruct the original input data. Simultaneously, the supervisor component was co-trained with the Bi-LSTM autoencoder. This supervisor component utilized the extracted representation as input to predict the probability of mortality. 
 - **b.** We represented EHR in multiple representations in different hidden dimensions. Subsequently, K-means was employed to cluster each representation. In this illustration, we conducted K-means on five representations (left). The similarity of pair-wise patients was quantified as the frequency of being clustered into the same group. For instance, patient 1 and patient 2 were consistently clustered together in four out of five representations, and their similarity was calculated as 4 divided by 5. This similarity matrix, a symmetrical matrix, was constructed to record the pairwise similarities between patients (right). 
@@ -50,7 +50,7 @@ The parameters were illustrated as bellow,
 
 The code results in multiple representations `rep_{n}.pkl` in the folder `./representations` and logs in the folder `./runs`. The representations in different hidden dimensions can be visualized as below
 
-![Visualization of representations](.\img\Visualization of representations.png)
+![Visualization of representations](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Visualization%20of%20Representations.png)
 
 #### Conduct consensus clustering
 
@@ -58,7 +58,7 @@ To conduct consensus clustering on representations in multiple dimensions in par
 
 [02_consensus_clustering.py](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/02_consensus_clustering.py), which will generates the figure of the relative change in area under CDF Curve and the average consensus value of each cluster. The derived subphenotypes `consensus_cluster_{k}.pkl` will be generated in the folder `./results`. The consensus matrixes demonstrated the similarity of the pair-wised patients. The blue lines indicated the cluster division.
 
-![Graphic Abstract](.\img\Consensus Matrixes.png)
+![Graphic Abstract](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Consensus%20Matrixes.png)
 
 #### Conduct further analysis
 
