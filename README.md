@@ -15,18 +15,22 @@
 
 ![Model Overview](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Model%20Overview.png)
 
-- **a.** Time series electronic health records (EHR) were utilized as input data for the Bi-LSTM encoder in our study. The Bi-LSTM encoder processed the EHR data, and the hidden state in the final time step was extracted as the representation. Subsequently, the Bi-LSTM decoder employed both the representation and the time-reversed input data to reconstruct the original input data. Simultaneously, the supervisor component was co-trained with the Bi-LSTM autoencoder. This supervisor component utilized the extracted representation as input to predict the probability of mortality. 
+- **a.** Time series electronic health records (EHR) were utilized as input data for the Bi-LSTM encoder in our study. The Bi-LSTM encoder processed the EHR data, and the hidden state in the final time step was extracted as the representation. Subsequently, the Bi-LSTM decoder employed both the representation and the time-reversed input data to reconstruct the original input data. Simultaneously, the supervisor component was co-trained with the Bi-LSTM autoencoder. This supervisor component utilized the extracted representation as input to predict the probability of mortality [[Paper](https://www.sciencedirect.com/science/article/pii/S1532046423001144)].
 - **b.** We represented EHR in multiple representations in different hidden dimensions. Subsequently, K-means was employed to cluster each representation. In this illustration, we conducted K-means on five representations (left). The similarity of pair-wise patients was quantified as the frequency of being clustered into the same group. For instance, patient 1 and patient 2 were consistently clustered together in four out of five representations, and their similarity was calculated as 4 divided by 5. This similarity matrix, a symmetrical matrix, was constructed to record the pairwise similarities between patients (right). 
 
 ## How to explore this project
 
 ### Installing dependencies
 
-All the required dependencies are in [requirements.txt](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/requirements.txt)
-
-For installing all the dependencies run this line of code in command
+All the required dependencies are in [requirements.txt](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/requirements.txt). For installing all the dependencies run this line of code in command
 
 `pip install -r requirements.txt`
+
+### Data preparation
+
+- Prepare your time-series data into a `.pkl` file and put it in the folder `dataset`. You can customize your dataset in [utils.py](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/utils.py). 
+- The input data `X` requires a three-dimension format  `[number of samples, time dimension, feature dimension]`. 
+- The input data `Y` requires a one-dimension format. The representations will be correlated with data `Y` by supervised learning [[Paper](https://www.sciencedirect.com/science/article/pii/S1532046423001144)].
 
 ### Run codes
 
@@ -54,15 +58,13 @@ The code results in multiple representations `rep_{n}.pkl` in the folder `./repr
 
 #### Conduct consensus clustering
 
-To conduct consensus clustering on representations in multiple dimensions in parallel, run 
+- To conduct consensus clustering on representations in multiple dimensions in parallel, run [02_consensus_clustering.py](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/02_consensus_clustering.py), which will generates the figure of the relative change in area under CDF Curve and the average consensus value of each cluster. 
 
-[02_consensus_clustering.py](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/02_consensus_clustering.py), which will generates the figure of the relative change in area under CDF Curve and the average consensus value of each cluster. The derived subphenotypes `consensus_cluster_{k}.pkl` will be generated in the folder `./results`. The consensus matrixes demonstrated the similarity of the pair-wised patients. The blue lines indicated the cluster division.
+- The derived subphenotypes `consensus_cluster_{k}.pkl` will be generated in the folder `./results`. The consensus matrixes demonstrated the similarity of the pair-wised patients. The blue lines indicated the cluster division.
 
 ![Graphic Abstract](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Consensus%20Matrixes.png)
 
 #### Conduct further analysis
-
-
 
 Further analysis was summarized as below
 
