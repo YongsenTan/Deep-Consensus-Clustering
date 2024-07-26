@@ -1,5 +1,5 @@
 # Fine-grained subphenotypes in acute kidney injury populations based on deep clustering: derivation and interpretation
-
+Paper link: https://www.sciencedirect.com/science/article/pii/S1386505624002168
 ## Workflow
 
 ![Graphic Abstract](https://github.com/YongsenTan/Deep-Consensus-Clustering/blob/main/img/Graphic%20Abstract.png)
